@@ -29,4 +29,4 @@ then `cd` into the project directory root, and:
 To run the project:
 
     sbt package
-    spark-submit --master 'local[*]' --class br.ufrj.huestimator.Hello "$(pwd)/target/scala-2.10/huestimator_2.10-0.1.jar"
+    ./runApp
