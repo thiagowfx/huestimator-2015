@@ -1,2 +1,2 @@
 #!/bin/sh
-spark-submit --properties-file "$(pwd)/spark.conf" "$(pwd)/target/scala-2.10/huestimator_2.10-0.1.jar"
+spark-submit --properties-file "$(pwd)/spark.conf" $(pwd)/target/scala-*/huestimator*.jar
