@@ -1,4 +1,5 @@
-#!/bin/sh
-files=$(ls -1 $($(pwd)/target/scala-*/huestimator*.jar))
-file=$($files | head -1)
-spark-submit --properties-file "$(pwd)/spark.conf" $file
+#!/bin/bash
+files=$(ls -1 $(pwd)/target/scala-*/huestimator*.jar)
+file=${files[0]}
+echo "Submitting $file..."
+spark-submit --properties-file "$(pwd)/spark.conf" $file "$@"
