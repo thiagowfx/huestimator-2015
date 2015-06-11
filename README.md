@@ -25,3 +25,8 @@ then `cd` into the project directory root, and:
 - To compile the project: `sbt compile`
 - To package the project so it can be easily runned from another machine: `sbt package`
 - To clean the build: `sbt clean`
+
+To run the project:
+
+    sbt package
+    spark-submit --master 'local[*]' --class br.ufrj.huestimator.Hello "$(pwd)/target/scala-2.10/huestimator_2.10-0.1.jar"
