@@ -20,11 +20,8 @@ object Hello {
     var cwd = System.getProperty("user.dir")
     println("Current Working Directory: " + cwd)
 
-    var userHome = System.getProperty("user.home")
-    println("User Home: " + userHome)
-
     // Load and parse the data
-    val data = sc.textFile(userHome + "/data/lpsa.data")
+    val data = sc.textFile(args(0))
     val parsedData = data.map {
       line =>
       val parts = line.split(',')
