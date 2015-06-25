@@ -17,9 +17,6 @@ object Hello {
     val conf = new SparkConf()
     val sc = new SparkContext(conf)
 
-    var cwd = System.getProperty("user.dir")
-    println("Current Working Directory: " + cwd)
-
     // Load and parse the data
     val data = sc.textFile(args(0))
     val parsedData = data.map {
