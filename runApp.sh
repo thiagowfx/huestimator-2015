@@ -1,4 +1,5 @@
 #!/bin/bash
+# Script to easily launch our spark application
 files=$(ls -1 $(pwd)/target/scala-*/huestimator*.jar)
 file=${files[0]}
 dataFile=$(readlink -f $1)
