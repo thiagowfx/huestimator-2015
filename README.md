@@ -12,7 +12,7 @@ Members of the group:
 - Bruno Tourinho <brunottomas@gmail.com>
 - Thiago Perrotta <perrotta.thiago@poli.ufrj.br>
 
-Instructions
+Dependencies
 ============
 
 To compile the project, you will need to have `sbt` (Scala's Simple Build Tool) installed.
@@ -29,13 +29,31 @@ On Ubuntu, do a:
 
 Upstream (sbt): http://www.scala-sbt.org/0.13/tutorial/Installing-sbt-on-Linux.html
 
-then `cd` into the project directory root, and:
+Running
+=======
 
-    sbt package
-    ./runApp.sh
-    
-Additional information:
+Using Eclipse
+-------------
+
+Run `sbt eclipse` then import the project root into eclipse.
+
+Using the sbt pack plug-in
+--------------------------
+
+*RECOMMENDED*
+
+Run `sbt pack` then run the executable on `${PROJECT_ROOT}/target/pack/bin/`.
+
+Using spark-submit
+------------------
+
+Generate a `.jar` with `sbt package`, then do a:
+
+    files=$(ls -1 $(pwd)/target/scala-*/huestimator*.jar)
+    file=${files[0]}
+    spark-submit $file
+
+Additional information about `sbt`:
 
 - To compile the project: `sbt compile`
 - To clean the build: `sbt clean`
-- To package the project so it can be easily runned from another machine: `sbt package`
