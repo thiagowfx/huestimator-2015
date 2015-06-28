@@ -11,5 +11,8 @@ scalaVersion := "2.10.5"
 val sparkVersion = "1.3.1"
 
 // spark
-libraryDependencies += "org.apache.spark" %% "spark-core" % sparkVersion % "provided"
-libraryDependencies += "org.apache.spark" %% "spark-mllib" % sparkVersion % "provided"
+libraryDependencies += "org.apache.spark" %% "spark-core" % sparkVersion
+libraryDependencies += "org.apache.spark" %% "spark-mllib" % sparkVersion
+
+// Automatically find def main(args:Array[String]) methods from classpath
+packAutoSettings
