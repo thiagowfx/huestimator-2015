@@ -15,6 +15,11 @@ object Hello {
 
     // init spark context
     val conf = new SparkConf()
+      .setMaster("local[*]")
+      .setAppName("huestimator")
+      .set("spark.logConf", "true")
+
+    // init spark context
     val sc = new SparkContext(conf)
 
     // Load and parse the data
