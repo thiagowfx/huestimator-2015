@@ -13,7 +13,8 @@ object Hello {
 
   def main(args: Array[String]) {
 
-    // init spark context
+    // application properties
+    // upstream documentation: https://spark.apache.org/docs/latest/configuration.html
     val conf = new SparkConf()
       .setMaster("local[*]")
       .setAppName("huestimator")

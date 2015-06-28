@@ -14,5 +14,6 @@ val sparkVersion = "1.3.1"
 libraryDependencies += "org.apache.spark" %% "spark-core" % sparkVersion
 libraryDependencies += "org.apache.spark" %% "spark-mllib" % sparkVersion
 
-// Automatically find def main(args:Array[String]) methods from classpath
+// automatically find def main(args:Array[String]) methods from classpath
+// upstream documentation: https://github.com/xerial/sbt-pack
 packAutoSettings
