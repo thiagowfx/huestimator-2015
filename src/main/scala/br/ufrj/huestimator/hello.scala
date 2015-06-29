@@ -9,9 +9,16 @@ import org.apache.spark.mllib.regression.LinearRegressionModel
 import org.apache.spark.mllib.regression.LinearRegressionWithSGD
 import org.apache.spark.mllib.linalg.Vectors
 
+import org.apache.log4j.Logger
+import org.apache.log4j.Level
+
 object Hello {
 
   def main(args: Array[String]) {
+
+    // log
+    Logger.getLogger("org").setLevel(Level.OFF)
+    Logger.getLogger("akka").setLevel(Level.OFF)
 
     // application properties
     // upstream documentation: https://spark.apache.org/docs/latest/configuration.html
@@ -24,7 +31,8 @@ object Hello {
     val sc = new SparkContext(conf)
 
     // Load and parse the data
-    val data = sc.textFile(args(0))
+    val data = sc.textFile("data/lpsa.data")
+    
     val parsedData = data.map {
       line =>
       val parts = line.split(',')
