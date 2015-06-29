@@ -57,3 +57,12 @@ Additional information about `sbt`:
 
 - To compile the project: `sbt compile`
 - To clean the build: `sbt clean`
+
+Installing Hadoop
+=================
+
+On Ubuntu:
+
+    sudo add-apt-repository ppa:hadoop-ubuntu/stable
+    sudo apt-get update
+    sudo apt-get install hadoop
