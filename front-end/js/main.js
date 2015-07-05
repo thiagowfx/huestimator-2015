@@ -8,8 +8,6 @@ function populateResults(data) {
 }
 
 function submit_form() {
-	$("#results")[0].scrollIntoView(true);
-	$("#results_title").show();
 	$("#results").html('');
 
 	var formData = {
@@ -30,6 +28,8 @@ function submit_form() {
 		method: 'POST',
 		data: formData,
 		success: function (data, status, jqxhr) {
+			$("#results_title").show();
+			$("#results")[0].scrollIntoView(true);
 			populateResults(data);
 		},
 		error: function() {
