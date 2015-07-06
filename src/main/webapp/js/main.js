@@ -3,15 +3,13 @@ $(document).ready(function() {
 });
 
 function populateResults(data) {
-	// TODO: remove this
-	console.log('-- populateResults --');
-	console.log(data);
-
-	// TODO: stylize this
 	if(data.error !== undefined) {
-		$("#results").html('<b>Erro</b>: ' + data.error);
+		$("#results").html('<p style="color: red; font-size: 1.3em;"><span style="font-weight: bold; text-decoration: underline;">Erro</span>: ' + data.error + "</p>");
 		return;
 	}
+	
+	// TODO: popular os resultados
+	$("#results").html('TODO: popular os resultados. Data:<br />' + JSON.stringify(data));
 }
 
 function submit_form() {
@@ -35,13 +33,12 @@ function submit_form() {
 		method: 'POST',
 		data: formData,
 		success: function (data, status, jqxhr) {
-			$("#results")[0].scrollIntoView(true);
+			console.log('-- success --')
+			$(window).scrollTo(0, 800);
 			populateResults(data);
 		},
 		error: function() {
-			window.alert("Ocorreu um erro, o servidor não pôde ser acessado por alguma razão.");
+			window.alert("Ocorreu um erro: o servidor não pode ser acessado!");
 		}
 	});
-
-	console.log(data);
 }
