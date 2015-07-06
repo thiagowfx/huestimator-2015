@@ -53,16 +53,26 @@ a consulta profissional a um especialista de saúde.</p>
     <div class="container">
 
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-5">
           <h2>Formulário</h2>
           <p>Para realizar o teste, entre com seus dados abaixo:</p>
 
 	  <form role="form">
 
-	    <div class="form-group">
-              <label for="radius">Raio (média)</label>
-              <input type="text" class="form-control" id="radius" placeholder="Ex.: 5">
-	    </div>
+	<div class="form-group row">
+	  <div class="col-md-4">
+	     	<label for="radius_m">Raio (médio)</label>
+	      	<input type="text" class="form-control" id="radius_m" placeholder="Ex.: 5.0">
+	  </div>
+	  <div class="col-md-4">
+	     	<label for="radius_e">Raio (erro)</label>
+	      	<input type="text" class="form-control" id="radius_e" placeholder="Ex.: 5.0">
+	  </div>
+	  <div class="col-md-4">
+	     	<label for="radius_w">Raio (pior)</label>
+	      	<input type="text" class="form-control" id="radius_w" placeholder="Ex.: 5.0">
+	  </div>
+	</div>
 
 	    <div class="form-group">
               <label for="texture">Textura</label>
@@ -115,7 +125,7 @@ a consulta profissional a um especialista de saúde.</p>
 	  </form>
 
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <h2>Resultados</h2>
 	  <div id="results"></div>
        </div>
