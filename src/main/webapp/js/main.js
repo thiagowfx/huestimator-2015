@@ -3,8 +3,15 @@ $(document).ready(function() {
 });
 
 function populateResults(data) {
+	// TODO: remove this
 	console.log('-- populateResults --');
 	console.log(data);
+
+	// TODO: stylize this
+	if(data.error !== undefined) {
+		$("#results").html('<b>Erro</b>: ' + data.error);
+		return;
+	}
 }
 
 function submit_form() {
@@ -28,12 +35,11 @@ function submit_form() {
 		method: 'POST',
 		data: formData,
 		success: function (data, status, jqxhr) {
-			$("#results_title").show();
 			$("#results")[0].scrollIntoView(true);
 			populateResults(data);
 		},
 		error: function() {
-			window.alert("Ocorreu um erro.");
+			window.alert("Ocorreu um erro, o servidor não pôde ser acessado por alguma razão.");
 		}
 	});
 
