@@ -10,7 +10,7 @@ import org.apache.spark.mllib.regression.LabeledPoint
 import org.apache.log4j.Logger
 import org.apache.log4j.Level
 
-object Hello {
+object EntryPoint {
 
   def main(args: Array[String]) {
 
