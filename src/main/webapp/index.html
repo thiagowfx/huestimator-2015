@@ -1,149 +1,283 @@
 <!doctype html>
 <html class="no-js" lang="pt">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Huestimator</title>
-	<meta name="author" content="Thiago Barroso Perrotta, Bruno Tourinho Tomas, Bernardo Dornellas Amorim">
-        <meta name="description" content="Huestimator">
-        <meta name="keywords" content="Huestimator, Tumor, Câncer de Mama, Big Data">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Huestimator</title>
+<meta name="author"
+	content="Thiago Barroso Perrotta, Bruno Tourinho Tomas, Bernardo Dornellas Amorim">
+<meta name="description" content="Huestimator">
+<meta name="keywords"
+	content="Huestimator, Tumor, Câncer de Mama, Big Data">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
-        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<style>
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
+}
+</style>
+<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="css/main.css">
 
-        <!--[if lt IE 9]>
+<!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
         <![endif]-->
-    </head>
-    <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Huestimator</a>
-        </div>
-      </div>
-    </nav>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Huestimator</a>
+			</div>
+		</div>
+	</nav>
 
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Huestimator</h1>
-        <p>Aqui você pode descobrir rapidamente a probabilidade de que você tenha câncer de mama.</p>
-        <p><b>Disclaimer:</b> o resultado apresentado pelo sistema não possui nenhum valor científico, tampouco deve
-substituir um exame clínico. Além disso, sua utilização não deverá, em hipótese alguma, substituir
-a consulta profissional a um especialista de saúde.</p>
-        <p><a class="btn btn-primary btn-lg" href="http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29" role="button">Leia mais sobre o projeto original &raquo;</a></p>
-      </div>
-    </div>
-
-    <div class="container">
-
-      <div class="row">
-        <div class="col-md-5">
-          <h2>Formulário</h2>
-          <p>Para realizar o teste, entre com seus dados abaixo:</p>
-
-	  <form role="form">
-
-	<div class="form-group row">
-	  <div class="col-md-4">
-	     	<label for="radius_m">Raio (médio)</label>
-	      	<input type="text" class="form-control" id="radius_m" placeholder="Ex.: 5.0">
-	  </div>
-	  <div class="col-md-4">
-	     	<label for="radius_e">Raio (erro)</label>
-	      	<input type="text" class="form-control" id="radius_e" placeholder="Ex.: 5.0">
-	  </div>
-	  <div class="col-md-4">
-	     	<label for="radius_w">Raio (pior)</label>
-	      	<input type="text" class="form-control" id="radius_w" placeholder="Ex.: 5.0">
-	  </div>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Huestimator</h1>
+			<p>Aqui você pode descobrir rapidamente a probabilidade de que
+				você tenha câncer de mama.</p>
+			<p>
+				<b>Disclaimer:</b> o resultado apresentado pelo sistema não possui
+				nenhum valor científico, tampouco deve substituir um exame clínico.
+				Além disso, sua utilização não deverá, em hipótese alguma,
+				substituir a consulta profissional a um especialista de saúde.
+			</p>
+			<p>
+				<a class="btn btn-primary btn-lg"
+					href="http://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29"
+					role="button">Leia mais sobre o projeto original &raquo;</a>
+			</p>
+		</div>
 	</div>
 
-	    <div class="form-group">
-              <label for="texture">Textura</label>
-              <input type="text" class="form-control" id="texture" placeholder="Ex.: 1">
-	    </div>
+	<div class="container">
 
-	    <div class="form-group">
-              <label for="perimeter">Perímetro</label>
-              <input type="text" class="form-control" id="perimeter" placeholder="Ex.: 1">
-	    </div>
+		<div class="row">
+			<div class="col-md-7">
+				<h2>Formulário</h2>
+				<p>Para realizar o teste, entre com seus dados abaixo:</p>
 
-	    <div class="form-group">
-              <label for="area">Área</label>
-              <input type="text" class="form-control" id="area" placeholder="Ex.: 1">
-	    </div>
+				<form role="form">
 
-	    <div class="form-group">
-              <label for="suavization">Suavidade (variação local dos raios)</label>
-              <input type="text" class="form-control" id="suavization" placeholder="Ex.: 2">
-	    </div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="radius_m">Raio (média)</label> <input type="text"
+								class="form-control" id="radius_m" placeholder="Ex.: 5.0">
+						</div>
+						<div class="col-md-4">
+							<label for="radius_e">Raio (erro)</label> <input type="text"
+								class="form-control" id="radius_e" placeholder="Ex.: 5.0">
+						</div>
+						<div class="col-md-4">
+							<label for="radius_w">Raio (pior)</label> <input type="text"
+								class="form-control" id="radius_w" placeholder="Ex.: 5.0">
+						</div>
+					</div>
 
-	    <div class="form-group">
-              <label for="compacity">Compacidade (perímetro^2 / área)</label>
-              <input type="text" class="form-control" id="compacity" placeholder="Ex.: 1">
-	    </div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="texture_m">Textura (média)</label> <input type="text"
+								class="form-control" id="texture_m" placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="texture_e">Textura (erro)</label> <input type="text"
+								class="form-control" id="texture_e" placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="texture_w">Textura (pior)</label> <input type="text"
+								class="form-control" id="texture_w" placeholder="Ex.: 1.0">
+						</div>
+					</div>
 
-	    <div class="form-group">
-              <label for="concavity">Concavidade (severidade de porções côncavas do contorno)</label>
-              <input type="text" class="form-control" id="concavity" placeholder="Ex.: 3">
-	    </div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="perimeter_m">Perímetro (média)</label> <input
+								type="text" class="form-control" id="perimeter_m"
+								placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="perimeter_e">Perímetro (erro)</label> <input
+								type="text" class="form-control" id="perimeter_e"
+								placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="perimeter_w">Perímetro (pior)</label> <input
+								type="text" class="form-control" id="perimeter_w"
+								placeholder="Ex.: 1.0">
+						</div>
+					</div>
 
-	    <div class="form-group">
-              <label for="concave_points">Pontos côncavos</label>
-              <input type="text" class="form-control" id="concave_points" placeholder="Ex.: 1">
-	    </div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="area_m">Área (média)</label> <input type="text"
+								class="form-control" id="area_m" placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="area_e">Área (erro)</label> <input type="text"
+								class="form-control" id="area_e" placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="area_w">Área (pior)</label> <input type="text"
+								class="form-control" id="area_w" placeholder="Ex.: 1.0">
+						</div>
+					</div>
 
-	    <div class="form-group">
-              <label for="simmetry">Simetria</label>
-              <input type="text" class="form-control" id="simmetry" placeholder="Ex.: 1">
-	    </div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="suavization_m">Suavidade (média)</label> <input
+								type="text" class="form-control" id="suavization_m"
+								placeholder="Ex.: 2.0">
+						</div>
+						<div class="col-md-4">
+							<label for="suavization_e">Suavidade (erro)</label> <input
+								type="text" class="form-control" id="suavization_e"
+								placeholder="Ex.: 2.0">
+						</div>
+						<div class="col-md-4">
+							<label for="suavization_w">Suavidade (pior)</label> <input
+								type="text" class="form-control" id="suavization_w"
+								placeholder="Ex.: 2.0">
+						</div>
+					</div>
 
-	    <div class="form-group">
-              <label for="fractal_dimension">Dimensão Fractal</label>
-              <input type="text" class="form-control" id="fractal_dimension" placeholder="Ex.: 2">
-	    </div>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="compacity_m">Compacidade (média)</label> <input
+								type="text" class="form-control" id="compacity_m"
+								placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="compacity_e">Compacidade (erro)</label> <input
+								type="text" class="form-control" id="compacity_e"
+								placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="compacity_w">Compacidade (pior)</label> <input
+								type="text" class="form-control" id="compacity_w"
+								placeholder="Ex.: 1.0">
+						</div>
+					</div>
 
-	    <button type="button" class="btn btn-default" id="submitbtn"><i class="glyphicon glyphicon-ok"></i> Submeter</button>
-	    <button type="reset" class="btn"><i class="glyphicon glyphicon-remove"></i> Limpar</button>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="concavity_m">Concavidade (média)</label> <input
+								type="text" class="form-control" id="concavity_m"
+								placeholder="Ex.: 3.0">
+						</div>
+						<div class="col-md-4">
+							<label for="concavity_e">Concavidade (erro)</label> <input
+								type="text" class="form-control" id="concavity_e"
+								placeholder="Ex.: 3.0">
+						</div>
+						<div class="col-md-4">
+							<label for="concavity_w">Concavidade (pior)</label> <input
+								type="text" class="form-control" id="concavity_w"
+								placeholder="Ex.: 3.0">
+						</div>
+					</div>
 
-	  </form>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="concave_points_m">Pontos côncavos (média)</label> <input
+								type="text" class="form-control" id="concave_points_m"
+								placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="concave_points_e">Pontos côncavos (erro)</label> <input
+								type="text" class="form-control" id="concave_points_e"
+								placeholder="Ex.: 1.0">
+						</div>
 
-        </div>
-        <div class="col-md-7">
-          <h2>Resultados</h2>
-	  <div id="results"></div>
-       </div>
-      </div>
+						<div class="col-md-4">
+							<label for="concave_points_w">Pontos côncavos (pior)</label> <input
+								type="text" class="form-control" id="concave_points_w"
+								placeholder="Ex.: 1.0">
+						</div>
+					</div>
 
-      <hr>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="simmetry_m">Simetria (média)</label> <input
+								type="text" class="form-control" id="simmetry_m"
+								placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="simmetry_e">Simetria (erro)</label> <input
+								type="text" class="form-control" id="simmetry_e"
+								placeholder="Ex.: 1.0">
+						</div>
+						<div class="col-md-4">
+							<label for="simmetry_w">Simetria (pior)</label> <input
+								type="text" class="form-control" id="simmetry_w"
+								placeholder="Ex.: 1.0">
+						</div>
+					</div>
 
-      <footer>
-        <p>&copy; Thiago Barroso Perrotta, Bruno Tourinho Tomas, Bernardo Dornellas Amorim 2015</p>
-      </footer>
-    </div> <!-- /container -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
-        
-        <script src="js/vendor/jquery.scrollTo.min.js"></script>
+					<div class="form-group row">
+						<div class="col-md-4">
+							<label for="fractal_dimension_m">Dimensão Fractal (média)</label>
+							<input type="text" class="form-control" id="fractal_dimension_m"
+								placeholder="Ex.: 2.0">
+						</div>
+						<div class="col-md-4">
+							<label for="fractal_dimension_e">Dimensão Fractal (erro)</label>
+							<input type="text" class="form-control" id="fractal_dimension_e"
+								placeholder="Ex.: 2.0">
+						</div>
+						<div class="col-md-4">
+							<label for="fractal_dimension_w">Dimensão Fractal (pior)</label>
+							<input type="text" class="form-control" id="fractal_dimension_w"
+								placeholder="Ex.: 2.0">
+						</div>
+					</div>
 
-        <script src="js/vendor/bootstrap.min.js"></script>
+					<button type="button" class="btn btn-default" id="submitbtn">
+						<i class="glyphicon glyphicon-ok"></i> Submeter
+					</button>
+					<button type="reset" class="btn">
+						<i class="glyphicon glyphicon-remove"></i> Limpar
+					</button>
 
-        <script src="js/main.js"></script>
-    </body>
+				</form>
+
+			</div>
+			<div class="col-md-5">
+				<h2>Resultados</h2>
+				<div id="results"></div>
+			</div>
+		</div>
+
+		<hr>
+
+		<footer>
+			<p>&copy; Thiago Barroso Perrotta, Bruno Tourinho Tomas, Bernardo
+				Dornellas Amorim 2015</p>
+		</footer>
+	</div>
+	<!-- /container -->
+	<script
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+		window.jQuery
+				|| document
+						.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')
+	</script>
+
+	<script src="js/vendor/jquery.scrollTo.min.js"></script>
+
+	<script src="js/vendor/bootstrap.min.js"></script>
+
+	<script src="js/main.js"></script>
+</body>
 </html>
