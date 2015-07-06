@@ -12,41 +12,27 @@ Group members:
 - Bruno Tourinho <brunottomas@gmail.com>
 - Thiago Perrotta <perrotta.thiago@poli.ufrj.br>
 
-Dependencies
-============
-
 Building & Running
 ==================
 
+**RECOMMENDED**
+
+To start scalatra, run:
+
+    $ ./sbt
+    > compile
+    > container:start
+    > browse
+
+If `browse` doesn't launch your web browser, then manually open [http://localhost:8080/](http://localhost:8080/) in it.
+
 Using eclipse
--------------
+=============
 
 Run `./sbt eclipse` then import the project root directory into eclipse's workspace.
 Should you update the project build, run this command again then refresh the project on eclipse.
 
 Using the sbt pack plug-in
---------------------------
-
-**RECOMMENDED**
+==========================
 
 Run `./sbt pack` then run the generated executable on `${PROJECT_ROOT}/target/pack/bin/`.
-
-Using spark-submit
-------------------
-
-Generate a `.jar` with `./sbt package`, then do a:
-
-    files=$(ls -1 $(pwd)/target/scala-*/huestimator*.jar)
-    file=${files[0]}
-    spark-submit $file
-
-Scalatra
-========
-
-To start scalatra, run:
-
-    $ ./sbt
-    > container:start
-    > browse
-
-If `browse` doesn't launch your browser, then manually open [http://localhost:8080/](http://localhost:8080/) in your web browser.
