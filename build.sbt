@@ -25,7 +25,6 @@ libraryDependencies += "org.eclipse.jetty" % "jetty-plus" % "9.1.5.v20140505" % 
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.2" % "runtime"
 libraryDependencies += "org.scalatra" %% "scalatra" % scalatraVersion
 libraryDependencies += "org.scalatra" %% "scalatra-scalate" % scalatraVersion
-libraryDependencies += "org.scalatra" %% "scalatra-specs2" % scalatraVersion % "test"
 
 // automatically find def main(args:Array[String]) methods from classpath
 // upstream documentation: https://github.com/xerial/sbt-pack
