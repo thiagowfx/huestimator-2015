@@ -3,10 +3,10 @@ Huestimator
 
 Final Project  
 Big Data @ Federal University of Rio de Janeiro @ 2015.1  
-Prof. Sérgio Barbosa Villas-Boas <sbvb@sbvb.com.br>
+Prof. Sérgio Barbosa Villas-Boas <sbvb@sbvb.com.br>  
 sbVB - http://www.sbvb.com.br
 
-Members of the group:
+Group members:
 
 - Bernardo Dornellas <bamorim2@gmail.com>
 - Bruno Tourinho <brunottomas@gmail.com>
@@ -15,54 +15,38 @@ Members of the group:
 Dependencies
 ============
 
-To compile the project, you will need to have `sbt` (Scala's Simple Build Tool) installed.
+Building & Running
+==================
 
-On Arch Linux, simply do a:
-
-    sudo pacman -S sbt scala
-
-On Ubuntu, do a:
-
-    echo "deb http://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-    sudo apt-get update
-    sudo apt-get install sbt scala
-
-Upstream (sbt): http://www.scala-sbt.org/0.13/tutorial/Installing-sbt-on-Linux.html
-
-Running
-=======
-
-Using Eclipse
+Using eclipse
 -------------
 
-Run `sbt eclipse` then import the project root into eclipse.
+Run `./sbt eclipse` then import the project root directory into eclipse's workspace.
+Should you update the project build, run this command again then refresh the project on eclipse.
 
 Using the sbt pack plug-in
 --------------------------
 
-*RECOMMENDED*
+**RECOMMENDED**
 
-Run `sbt pack` then run the executable on `${PROJECT_ROOT}/target/pack/bin/`.
+Run `./sbt pack` then run the generated executable on `${PROJECT_ROOT}/target/pack/bin/`.
 
 Using spark-submit
 ------------------
 
-Generate a `.jar` with `sbt package`, then do a:
+Generate a `.jar` with `./sbt package`, then do a:
 
     files=$(ls -1 $(pwd)/target/scala-*/huestimator*.jar)
     file=${files[0]}
     spark-submit $file
 
-Additional information about `sbt`:
+Scalatra
+========
 
-- To compile the project: `sbt compile`
-- To clean the build: `sbt clean`
+To start scalatra, run:
 
-Installing Hadoop
-=================
+    $ ./sbt
+    > container:start
+    > browse
 
-On Ubuntu:
-
-    sudo add-apt-repository ppa:hadoop-ubuntu/stable
-    sudo apt-get update
-    sudo apt-get install hadoop
+If `browse` doesn't launch your browser, then manually open [http://localhost:8080/](http://localhost:8080/) in your web browser.
