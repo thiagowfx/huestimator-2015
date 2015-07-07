@@ -8,7 +8,7 @@ import org.json4s.jackson.JsonMethods._
 
 case class Model(val data: String) {
 
-  def isValid(): Boolean = {
+  def isValid(): (Boolean, String) = {
     def isNumeric(str: String): Boolean = {
       def throwsNumberFormatException(f: => Any): Boolean = {
         try { f; false } catch { case e: NumberFormatException => true }
@@ -18,7 +18,15 @@ case class Model(val data: String) {
 
     val parts = data.split(',')
 
-    parts.length == 30 && parts.forall(isNumeric)
+    if(parts.length != 30) {
+      return (false, "Todos os campos devem ser preenchidos.")
+    }
+    
+    else if(!parts.forall(isNumeric)) {
+      return (false, "Todos os campos devem ser numéricos.")
+    }
+    
+    return (true, "")
   }
 
 }
@@ -27,10 +35,11 @@ class MainServlet extends ScalatraServlet {
 
   post("/predict") {
     val model: Model = Model(params("data"));
+    val (isValid, errorMessage) = model.isValid()
     var json: JValue = ""
 
-    if (!model.isValid()) {
-      json = ("error" -> "Todos os dados devem ser numéricos.")
+    if (!isValid) {
+      json = ("error" -> errorMessage)
     } else {
       // TODO: pass the model to our application, use it and return something useful to the user
       json = ("response" -> "<b>HTML legal</b>")
