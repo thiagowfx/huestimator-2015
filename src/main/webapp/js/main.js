@@ -89,11 +89,16 @@ function submit_form() {
 	                ]
 
 	var dataStr = '';
-	for (var i = 0; i < dataArr.length; i++) {
+	for (var i = 0; i < dataArr.length; i++) {		
+		var nextStr = $("#" + dataArr[i]).val();
+		if (nextStr === '')
+			continue;
+		
 		if (i > 0) {
 			dataStr += ',';
 		}
-		dataStr += $("#" + dataArr[i]).val();
+		
+		dataStr += nextStr;
 	}
 
 	$.ajax({
