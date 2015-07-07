@@ -31,8 +31,3 @@ Using eclipse
 
 Run `./sbt eclipse` then import the project root directory into eclipse's workspace.
 Should you update the project build, run this command again then refresh the project on eclipse.
-
-Using the sbt pack plug-in
-==========================
-
-Run `./sbt pack` then run the generated executable on `${PROJECT_ROOT}/target/pack/bin/`.
