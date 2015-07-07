@@ -26,15 +26,34 @@ class Classifier {
     Logger.getLogger("akka").setLevel(Level.OFF)
   }
 
-  private def trainModel(): Double = {
+  def stopSpark(): Unit = {
+    sc.stop()
+  }
 
-    def train(data: RDD[LabeledPoint]): LogisticRegressionModel = {
-      // Run training algorithm to build the model
-      new LogisticRegressionWithLBFGS()
-        .setNumClasses(2)
-        .run(data)
-    }
+  def predict(features: Array[Double]): Boolean = {
+    val model = trainModel()
+    model.predict(Vectors.dense(features)) > 0.5
+  }
 
+  private def train(data: RDD[LabeledPoint]): LogisticRegressionModel = {
+    // Run training algorithm to build the model
+    new LogisticRegressionWithLBFGS()
+      .setNumClasses(2)
+      .run(data)
+  }
+
+  // Train the model with all the data
+  private def trainModel(): LogisticRegressionModel = {
+    // Load and parse the data
+    val data = sc.textFile("data/wdbc.data")
+
+    val parsedData = parseData(data).cache()
+
+    train(parsedData)
+  }
+
+  // Evaluate the model to get the precision using 70/30 train/test split
+  def evaluateModel(): Double = {
     // Load and parse the data
     val data = sc.textFile("data/wdbc.data")
 
@@ -60,10 +79,6 @@ class Classifier {
     metrics.precision
   }
 
-  def stopSpark(): Unit = {
-    sc.stop()
-  }
-
   private def parseData(rawData: RDD[String]): RDD[LabeledPoint] = {
     rawData.map {
       line =>
@@ -71,16 +86,6 @@ class Classifier {
         val label = if (parts(1) == "M") 1.0 else 0.0
         LabeledPoint(label, Vectors.dense(parts.drop(2).map(_.toDouble)))
     }
-  }
-
-  def queryModel(input: String): (Double, Boolean) = {
-    val precision = trainModel() 
-    
-    val inputBernardo = parseData(sc.makeRDD(Array(input), 1)).first()
-    
-    var diagnosis = true
-    
-    (precision, diagnosis)
   }
 
 }

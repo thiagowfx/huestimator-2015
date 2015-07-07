@@ -42,10 +42,11 @@ class MainServlet extends ScalatraServlet {
       json = ("error" -> errorMessage)
     } else {
       val classifier = new Classifier;
-      val (precision, diagnosis) = classifier.queryModel(params("data"))
+      val features = params("data").split(',').map(_.toDouble)
+      val diagnosis = classifier.predict(features)
       classifier.stopSpark()
       
-      val successMessage = "Você provavelmente <b>" + (if (diagnosis) "" else "não") + " tem</b> câncer de mama. Esse resultado tem uma acurácia de: <b>" + precision.toString() + "</b>"
+      val successMessage = if (diagnosis) "Foi mal, você tem cancêr" else "Oba, você não tem cancêr"
       json = ("response" -> successMessage)
     }
 
