@@ -6,40 +6,37 @@ import org.json4s._
 import org.json4s.JsonDSL._
 import org.json4s.jackson.JsonMethods._
 
-// TODO: complete this class with all parameters
-case class Model (
-      val radius: String,
-      val texture: String
-    ) 
- {
-  
-  def isNumeric(input: String): Boolean = input.forall(_.isDigit)
-  
-  def isValid() : Boolean = {
-    isNumeric(radius) &&
-    isNumeric(texture)
+case class Model(val data: String) {
+
+  def isValid(): Boolean = {
+    def isNumeric(str: String): Boolean = {
+      def throwsNumberFormatException(f: => Any): Boolean = {
+        try { f; false } catch { case e: NumberFormatException => true }
+      }
+      !throwsNumberFormatException(str.toLong) || !throwsNumberFormatException(str.toDouble)
+    }
+
+    val parts = data.split(',')
+
+    parts.length == 30 && parts.forall(isNumeric)
   }
-  
+
 }
 
 class MainServlet extends ScalatraServlet {
-  
+
   post("/predict") {
-    contentType = " application/json"
-    var json : JValue = ""
-    
-    val model : Model = Model(params("radius"), params("texture"))
-    
-    if(!model.isValid()) {
+    val model: Model = Model(params("data"));
+    var json: JValue = ""
+
+    if (!model.isValid()) {
       json = ("error" -> "Todos os dados devem ser numéricos.")
-    }
-    
-    else {
-      // TODO: validate more input
+    } else {
       // TODO: pass the model to our application, use it and return something useful to the user
-      json = "TODO: simple json string"
+      json = ("response" -> "<b>HTML legal</b>")
     }
-     
+
+    contentType = " application/json"
     compact(render(json))
   }
 
