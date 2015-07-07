@@ -73,8 +73,11 @@ class Classifier {
     }
   }
 
-  def queryModel(input: String): Double = {
-    trainModel()
+  def queryModel(input: String): (Double, Boolean) = {
+    val precision = trainModel()
+    var diagnosis = true
+    
+    (precision, diagnosis)
   }
 
 }
