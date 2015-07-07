@@ -74,7 +74,10 @@ class Classifier {
   }
 
   def queryModel(input: String): (Double, Boolean) = {
-    val precision = trainModel()
+    val precision = trainModel() 
+    
+    val inputBernardo = parseData(sc.makeRDD(Array(input), 1)).first()
+    
     var diagnosis = true
     
     (precision, diagnosis)

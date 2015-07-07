@@ -26,7 +26,3 @@ libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.2" % "runtime
 libraryDependencies += "org.scalatra" %% "scalatra" % scalatraVersion
 libraryDependencies += "org.scalatra" %% "scalatra-scalate" % scalatraVersion
 libraryDependencies += "org.json4s" %% "json4s-native" % "3.2.11"
-
-// automatically find def main(args:Array[String]) methods from classpath
-// upstream documentation: https://github.com/xerial/sbt-pack
-packAutoSettings
