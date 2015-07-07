@@ -41,8 +41,12 @@ class MainServlet extends ScalatraServlet {
     if (!isValid) {
       json = ("error" -> errorMessage)
     } else {
-      // TODO: pass the model to our application, use it and return something useful to the user
-      json = ("response" -> "<b>HTML legal</b>")
+      val classifier = new Classifier;
+      val precision = classifier.queryModel(params("data"))
+      classifier.stopSpark()
+      
+      val successMessage = "A probabilidade de que você tenha câncer de mama é de: <b>" + precision.toString() + "</b>"
+      json = ("response" -> successMessage)
     }
 
     contentType = " application/json"

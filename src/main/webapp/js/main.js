@@ -4,7 +4,7 @@ $(document).ready(function() {
 });
 
 function getRandomDouble(){
-	return Math.random()*5;
+	return Math.random() * 5;
 }
 
 function populateRandom(){
